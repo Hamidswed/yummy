@@ -26,9 +26,7 @@ export type RecipeType = {
 function App() {
   const [getRecipe, setGetRecipe] = useState<RecipeType>();
   const [userInput, setUserInput] = useState("");
-  const url = !userInput
-    ? "https://www.themealdb.com/api/json/v1/1/search.php?s"
-    : `https://www.themealdb.com/api/json/v1/1/search.php?s=${userInput}`;
+  const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${userInput}`;
   const getData = () => {
     fetch(url)
       .then((res) => res.json())
@@ -39,6 +37,7 @@ function App() {
   useEffect(() => {
     catchedData();
   }, [catchedData]);
+
 
   return (
     <div className="App">

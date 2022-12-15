@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -28,6 +28,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
+
 type RecipeType = {
   idMeal: number;
   strMeal: string;
@@ -46,9 +47,13 @@ type PropType = {
 };
 const RecipeItem = ({ recipeItem }: PropType) => {
   const [expanded, setExpanded] = useState(false);
+  const [favoritClick, setFavoriteClick] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+  const favoriteHandler = () => {
+    setFavoriteClick(!favoritClick);
   };
   return (
     <Card sx={{ width: 345 }}>
@@ -58,6 +63,7 @@ const RecipeItem = ({ recipeItem }: PropType) => {
             {recipeItem.strMeal.charAt(0)}
           </Avatar>
         }
+        sx={{ fontFamily: "inherit" }}
         action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
@@ -74,26 +80,27 @@ const RecipeItem = ({ recipeItem }: PropType) => {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          <ul>
-            <li>
-              {recipeItem.strIngredient1}: {recipeItem.strMeasure1}
-            </li>
-            <li>
-              {recipeItem.strIngredient2}: {recipeItem.strMeasure2}
-            </li>
-            <li>
-              {recipeItem.strIngredient3}: {recipeItem.strMeasure3}
-            </li>
-          </ul>
+          <h4>Ingredients:</h4>
+        </Typography>
+        <Typography variant="body2" color="text.secondary" align="left">
+          <p>
+            1.{recipeItem.strIngredient1}: {recipeItem.strMeasure1}
+          </p>
+          <p>
+            2.{recipeItem.strIngredient2}: {recipeItem.strMeasure2}
+          </p>
+          <p>
+            3.{recipeItem.strIngredient3}: {recipeItem.strMeasure3}
+          </p>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <FavoriteIcon
+            sx={{ color: favoritClick ? "red" : "gray" }}
+            onClick={favoriteHandler}
+          />
         </IconButton>
-        {/* <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton> */}
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
