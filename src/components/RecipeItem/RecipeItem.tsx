@@ -11,7 +11,6 @@ import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-// import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "./RecipeItem.css";
@@ -46,9 +45,13 @@ type RecipeType = {
 type PropType = {
   recipeItem: RecipeType;
   addToFavorite: Function;
-  removeFromFavorite:Function
+  removeFromFavorite: Function;
 };
-const RecipeItem = ({ recipeItem, addToFavorite,removeFromFavorite }: PropType) => {
+const RecipeItem = ({
+  recipeItem,
+  addToFavorite,
+  removeFromFavorite,
+}: PropType) => {
   const [expanded, setExpanded] = useState(false);
   const [favoritClick, setFavoriteClick] = useState(false);
 
@@ -64,7 +67,6 @@ const RecipeItem = ({ recipeItem, addToFavorite,removeFromFavorite }: PropType) 
             {recipeItem.strMeal.charAt(0)}
           </Avatar>
         }
-        sx={{ fontFamily: "inherit" }}
         action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
@@ -72,6 +74,7 @@ const RecipeItem = ({ recipeItem, addToFavorite,removeFromFavorite }: PropType) 
         }
         title={recipeItem.strMeal}
         subheader={recipeItem.strCategory}
+        className="card"
       />
       <CardMedia
         component="img"
@@ -96,7 +99,9 @@ const RecipeItem = ({ recipeItem, addToFavorite,removeFromFavorite }: PropType) 
           aria-label="add to favorites"
           onClick={() => {
             setFavoriteClick(!favoritClick);
-            favoritClick? removeFromFavorite(recipeItem.idMeal) :addToFavorite(recipeItem);
+            favoritClick
+              ? removeFromFavorite(recipeItem.idMeal)
+              : addToFavorite(recipeItem);
           }}
         >
           <FavoriteIcon sx={{ color: favoritClick ? "red" : "gray" }} />

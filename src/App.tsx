@@ -1,5 +1,5 @@
 import "./App.css";
-import NavBarContainer from "./components/NavBar/NavBarContainer";
+import NavBarMain from "./components/NavBar/NavBarMain";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Recipe from "./pages/Recipe/Recipe";
@@ -44,19 +44,19 @@ function App() {
     );
     if (recipeIndex === -1) {
       setFavorite([...updatedFavorite, recipeItem]);
-    }else{
-      removeFromFavorite(recipeItem.idMeal)
+    } else {
+      removeFromFavorite(recipeItem.idMeal);
     }
   };
-  
-  const removeFromFavorite=(id:number)=>{
-    const updatedFavorite = favorite.filter((item)=>item.idMeal!==id)
-    setFavorite(updatedFavorite)
-  }
+
+  const removeFromFavorite = (id: number) => {
+    const updatedFavorite = favorite.filter((item) => item.idMeal !== id);
+    setFavorite(updatedFavorite);
+  };
 
   return (
     <div className="App">
-      <NavBarContainer />
+      <NavBarMain favorite={favorite} />
       <Routes>
         <Route path="/" element={<Home recipeList={getRecipe} />} />
         <Route

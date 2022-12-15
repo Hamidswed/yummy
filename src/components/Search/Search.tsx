@@ -19,7 +19,9 @@ const Search = ({ userInput, setUserInput, recipeList }: PropType) => {
         label="Please enter the name"
         variant="standard"
         onChange={inputHandler}
-        className="text-field"
+        InputLabelProps={{
+          style: { color: "#f8951d", fontFamily: "inherit",},
+        }}
       />
       {!recipeList ? (
         <p>Sorry we have not got this recipe yet !</p>

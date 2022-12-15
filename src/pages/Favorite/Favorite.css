@@ -3,8 +3,12 @@
   flex-direction: column;
   align-items: center;
   padding-top: 150px;
+  padding-bottom: 100px;
 }
 .favorite h1{
   margin-bottom: 30px;
   color: #f8951d;
+}
+.favorite p{
+  color: lightgray;
 }

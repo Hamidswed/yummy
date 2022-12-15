@@ -1,8 +1,13 @@
+import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
+import { RecipeType } from "../../App";
 import "./NavBarMain.css";
 
-const NavBarMain = () => {
+type PropType={
+  favorite:RecipeType[]
+}
+const NavBarMain = ({favorite}:PropType) => {
   return (
     <div className="navbar">
       <div className="navbar-logo">
@@ -18,7 +23,7 @@ const NavBarMain = () => {
               <li>Recipe</li>
             </Link>
             <Link to="/favorite" style={{ textDecoration: "none" }}>
-              <li>Favorite</li>
+            <Badge badgeContent={favorite.length} color="warning"><li>Favorite</li></Badge>
             </Link>
             <Link to="/contact" style={{ textDecoration: "none" }}>
               <li>Contact</li>
