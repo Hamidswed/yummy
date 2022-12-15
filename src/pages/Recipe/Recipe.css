@@ -1,0 +1,10 @@
+.recipe-search{
+  padding-top: 140px;
+}
+.recipe{
+  padding: 80px 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}

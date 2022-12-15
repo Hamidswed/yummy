@@ -1,0 +1,78 @@
+
+.hero-img{
+  width: 100%;
+  overflow: hidden;
+}
+.hero-img img{
+  position: relative;
+  width: 100%;
+}
+.hero h2{
+  position: absolute;
+  color: #fff;
+  top:40%;
+  right: 160px;
+  font-size: 60px;
+  text-transform: uppercase;
+}
+.hero h2 span{
+  font-weight: normal;
+  color: #f8951d;
+}
+.hero-text{
+  padding: 40px 0;
+  color: #fff;
+}
+.hero-text h3{
+  font-size: 30px;
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+.hero-imgBox{
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  gap:30px;
+  justify-content: center;
+  align-items: center;
+}
+.hero-imgItem{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.hero-imgItem img{
+  width: 100%;
+  transition: .3s ease-in-out;
+  cursor: pointer;
+}
+.hero-imgItem img:hover{
+  transform: scale(1.2);
+}
+
+.dish{
+  position: absolute;
+  top: 130px;
+  left: 170px;
+  opacity: 1;
+  width: 565px;
+}
+.dish img{
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dish {
+    animation: dish-spin infinite 20s linear;
+  }
+}
+
+@keyframes dish-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
