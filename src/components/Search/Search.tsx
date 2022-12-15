@@ -1,11 +1,11 @@
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { RecipeType } from "../../App";
+import "./Search.css";
 
 type PropType = {
   userInput: string;
   setUserInput: React.Dispatch<React.SetStateAction<string>>;
-  recipeList?: RecipeType;
+  recipeList?: RecipeType[];
 };
 const Search = ({ userInput, setUserInput, recipeList }: PropType) => {
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,25 +13,19 @@ const Search = ({ userInput, setUserInput, recipeList }: PropType) => {
     setUserInput(result);
   };
   return (
-    <div>
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1, width: "25ch", color: "#fff" },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField
-          id="standard-basic"
-          label="Standard"
-          variant="standard"
-          onChange={inputHandler}
-        />
-      </Box>
-      {recipeList?.meals===null ? (
+    <div className="search">
+      <TextField
+        id="standard-basic"
+        label="Please enter the name"
+        variant="standard"
+        onChange={inputHandler}
+        className="text-field"
+      />
+      {!recipeList ? (
         <p>Sorry we have not got this recipe yet !</p>
-      ) : null}
+      ) : (
+        <p style={{ color: "lightgray" }}>suggestion: pizza, pork, lamb</p>
+      )}
     </div>
   );
 };

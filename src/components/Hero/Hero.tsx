@@ -5,7 +5,7 @@ import { RecipeType } from "../../App";
 
 
 type PropType={
-  recipeList?:RecipeType
+  recipeList?:RecipeType[]
 }
 const Hero = ({recipeList}:PropType) => {
   return (
@@ -36,8 +36,8 @@ const Hero = ({recipeList}:PropType) => {
       </section>
 
       <section className="hero-imgBox">
-        {recipeList?.meals.slice(0,5).map((item)=>{
-          return <div className="hero-imgItem">
+        {recipeList?.slice(0,5).map((item)=>{
+          return <div key={item.idMeal} className="hero-imgItem">
             <img src={item.strMealThumb} alt={item.strMeal} />
           </div>
         })}

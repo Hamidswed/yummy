@@ -14,6 +14,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 // import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import "./RecipeItem.css";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -44,17 +45,17 @@ type RecipeType = {
 };
 type PropType = {
   recipeItem: RecipeType;
+  addToFavorite: Function;
+  removeFromFavorite:Function
 };
-const RecipeItem = ({ recipeItem }: PropType) => {
+const RecipeItem = ({ recipeItem, addToFavorite,removeFromFavorite }: PropType) => {
   const [expanded, setExpanded] = useState(false);
   const [favoritClick, setFavoriteClick] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const favoriteHandler = () => {
-    setFavoriteClick(!favoritClick);
-  };
+
   return (
     <Card sx={{ width: 345 }}>
       <CardHeader
@@ -78,28 +79,27 @@ const RecipeItem = ({ recipeItem }: PropType) => {
         image={recipeItem.strMealThumb}
         alt={recipeItem.strMeal}
       />
-      <CardContent>
+      <CardContent className="card-content">
         <Typography variant="body2" color="text.secondary">
-          <h4>Ingredients:</h4>
+          Ingredients:
         </Typography>
         <Typography variant="body2" color="text.secondary" align="left">
-          <p>
-            1.{recipeItem.strIngredient1}: {recipeItem.strMeasure1}
-          </p>
-          <p>
-            2.{recipeItem.strIngredient2}: {recipeItem.strMeasure2}
-          </p>
-          <p>
-            3.{recipeItem.strIngredient3}: {recipeItem.strMeasure3}
-          </p>
+          1.{recipeItem.strIngredient1}: {recipeItem.strMeasure1}
+          <br />
+          2.{recipeItem.strIngredient2}: {recipeItem.strMeasure2}
+          <br />
+          3.{recipeItem.strIngredient3}: {recipeItem.strMeasure3}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon
-            sx={{ color: favoritClick ? "red" : "gray" }}
-            onClick={favoriteHandler}
-          />
+        <IconButton
+          aria-label="add to favorites"
+          onClick={() => {
+            setFavoriteClick(!favoritClick);
+            favoritClick? removeFromFavorite(recipeItem.idMeal) :addToFavorite(recipeItem);
+          }}
+        >
+          <FavoriteIcon sx={{ color: favoritClick ? "red" : "gray" }} />
         </IconButton>
         <ExpandMore
           expand={expanded}

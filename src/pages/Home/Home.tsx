@@ -3,7 +3,7 @@ import './Home.css'
 import { RecipeType } from "../../App";
 
 type PropType={
-  recipeList?:RecipeType
+  recipeList?:RecipeType[]
 }
 const Home = ({recipeList}:PropType) => {
   return (
