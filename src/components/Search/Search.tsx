@@ -19,6 +19,8 @@ const Search = ({ userInput, setUserInput, recipeList }: PropType) => {
         label="Please enter the name"
         variant="standard"
         onChange={inputHandler}
+        color="warning"
+        sx={{ input: { color: "#fff" }}}
         InputLabelProps={{
           style: { color: "#f8951d", fontFamily: "inherit",},
         }}
