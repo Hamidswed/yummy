@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { styled } from "@mui/material/styles";
+import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -28,6 +28,15 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
+
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      '"Rajdhani"',
+      'sans-serif',
+    ].join(','),
+  },
+});
 
 type RecipeType = {
   idMeal: number;
@@ -60,7 +69,8 @@ const RecipeItem = ({
   };
 
   return (
-    <Card sx={{ width: 345 }}>
+    <ThemeProvider theme={theme}>
+    <Card sx={{ width: 345 , fontFamily:"'Rajdhani', sans-serif"}}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -82,11 +92,11 @@ const RecipeItem = ({
         image={recipeItem.strMealThumb}
         alt={recipeItem.strMeal}
       />
-      <CardContent className="card-content">
-        <Typography variant="body2" color="text.secondary">
+      <CardContent>
+        <Typography variant="body2" color="text.secondary" sx={{marginBottom:"10px"}}>
           Ingredients:
         </Typography>
-        <Typography variant="body2" color="text.secondary" align="left">
+        <Typography variant="body2" color="text.secondary" align="left" sx={{lineHeight:"25px"}}>
           1.{recipeItem.strIngredient1}: {recipeItem.strMeasure1}
           <br />
           2.{recipeItem.strIngredient2}: {recipeItem.strMeasure2}
@@ -108,7 +118,7 @@ const RecipeItem = ({
         </IconButton>
         <ExpandMore
           expand={expanded}
-          onClick={handleExpandClick}
+          onClick={()=>handleExpandClick()}
           aria-expanded={expanded}
           aria-label="show more"
         >
@@ -122,6 +132,7 @@ const RecipeItem = ({
         </CardContent>
       </Collapse>
     </Card>
+    </ThemeProvider>
   );
 };
 export default RecipeItem;
