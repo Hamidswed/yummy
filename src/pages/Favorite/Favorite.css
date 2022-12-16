@@ -8,6 +8,7 @@
 .favorite h1{
   margin-bottom: 30px;
   color: #f8951d;
+  font-weight: normal;
 }
 .favorite p{
   color: lightgray;

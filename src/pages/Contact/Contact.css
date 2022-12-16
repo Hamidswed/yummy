@@ -1,0 +1,16 @@
+.contact{
+  display: flex;
+  flex-direction: column;
+  padding-top: 150px;
+  align-items: center;
+  gap: 15px;
+}
+.contact h1{
+  margin-bottom: 20px;
+  color: #f8951d;
+  font-weight: normal;
+}
+.contact p{
+  width: 300px;
+  color: #fff;
+}
