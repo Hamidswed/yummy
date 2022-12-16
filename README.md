@@ -9,6 +9,7 @@ The purpose of this assignment is to practice TypeScript
 
 ## Link to My Web Page:
 
+https://catering-yummy.vercel.app/
 
 ## Requirements
 
@@ -33,10 +34,10 @@ The purpose of this assignment is to practice TypeScript
 4. Favorite recipe
    ![favoriteRec](./src/assets/RecipeFav.jpg)
 
-4. Favorite page
+5. Favorite page
    ![favoritePage](./src/assets/FavoritePage.jpg)
 
-5. Contact page
+6. Contact page
    ![contactPage](./src/assets/ContactPage.jpg)
 
 ## Notes
