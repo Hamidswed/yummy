@@ -118,7 +118,7 @@ const RecipeItem = ({
         </IconButton>
         <ExpandMore
           expand={expanded}
-          onClick={()=>handleExpandClick()}
+          onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
         >

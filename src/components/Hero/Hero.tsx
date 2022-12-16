@@ -10,7 +10,7 @@ type PropType={
 const Hero = ({recipeList}:PropType) => {
   return (
     <div className="hero">
-      <section>
+      <section className="hero-section">
         <div className="hero-img">
           <img src={HeroImg} alt="hero-img" />
         </div>
@@ -26,15 +26,14 @@ const Hero = ({recipeList}:PropType) => {
           </span>
         </h2>
       </section>
-
-      <section className="hero-text">
+      <div className="footer">
+        <section className="hero-text">
         <h3>Popular food</h3>
         <p>
           We provides variety of food and beverage recepies with height taste
           from famous chefs
         </p>
       </section>
-
       <section className="hero-imgBox">
         {recipeList?.slice(0,5).map((item)=>{
           return <div key={item.idMeal} className="hero-imgItem">
@@ -42,6 +41,8 @@ const Hero = ({recipeList}:PropType) => {
           </div>
         })}
       </section>
+      </div>
+      
     </div>
   );
 };
