@@ -7,6 +7,9 @@ The purpose of this assignment is to practice TypeScript
 1. Step 1: `yarn`
 2. Step 2: `yarn start`
 
+## Link to My Web Page:
+
+
 ## Requirements
 
 1. Your application should have 4 pages namely: `Home`, `Recipe` ,`Favorite` and `Contact`
@@ -19,16 +22,22 @@ The purpose of this assignment is to practice TypeScript
 ## Screenshots
 
 1. Home page
-   ![homePage](./src/assets/home_page.png)
+   ![homePage](./src/assets/HomePage.jpg)
 
 2. Recipe page
-   ![recipePage](./src/assets/recipe_page.png)
+   ![recipePage](./src/assets/RecipePage.jpg)
 
-3. Favorite page
-   ![favoritePage](./src/assets/favorite_page.png)
+3. Search in Recipe page
+   ![searchPage](./src/assets/RecipeSearch.jpg)
 
-4. Contact page
-   ![contactPage](./src/assets/contact_page.png)
+4. Favorite recipe
+   ![favoriteRec](./src/assets/RecipeFav.jpg)
+
+4. Favorite page
+   ![favoritePage](./src/assets/FavoritePage.jpg)
+
+5. Contact page
+   ![contactPage](./src/assets/ContactPage.jpg)
 
 ## Notes
 

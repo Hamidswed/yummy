@@ -70,7 +70,7 @@ function App() {
             />
           }
         />
-        <Route path="/favorite" element={<Favorite favorite={favorite} />} />
+        <Route path="/favorite" element={<Favorite favorite={favorite} removeFromFavorite={removeFromFavorite}/>} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
