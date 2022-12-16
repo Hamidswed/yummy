@@ -5,14 +5,12 @@ import "./Recipe.css";
 
 type PropType = {
   recipeList?: RecipeType[];
-  userInput: string;
   setUserInput: React.Dispatch<React.SetStateAction<string>>;
   addToFavorite: Function;
   removeFromFavorite: Function;
 };
 const Recipe = ({
   recipeList,
-  userInput,
   setUserInput,
   addToFavorite,
   removeFromFavorite,
@@ -21,7 +19,6 @@ const Recipe = ({
     <div>
       <div className="recipe-search">
         <Search
-          userInput={userInput}
           setUserInput={setUserInput}
           recipeList={recipeList}
         />

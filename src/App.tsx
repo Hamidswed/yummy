@@ -22,7 +22,7 @@ export type RecipeType = {
 };
 
 function App() {
-  const [getRecipe, setGetRecipe] = useState<RecipeType[]>();
+  const [getRecipe, setGetRecipe] = useState<RecipeType[]>([]);
   const [userInput, setUserInput] = useState("");
   const [favorite, setFavorite] = useState<RecipeType[]>([]);
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${userInput}`;
@@ -64,7 +64,6 @@ function App() {
           element={
             <Recipe
               recipeList={getRecipe}
-              userInput={userInput}
               setUserInput={setUserInput}
               addToFavorite={addToFavorite}
               removeFromFavorite={removeFromFavorite}

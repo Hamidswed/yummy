@@ -3,11 +3,10 @@ import { RecipeType } from "../../App";
 import "./Search.css";
 
 type PropType = {
-  userInput: string;
   setUserInput: React.Dispatch<React.SetStateAction<string>>;
   recipeList?: RecipeType[];
 };
-const Search = ({ userInput, setUserInput, recipeList }: PropType) => {
+const Search = ({ setUserInput, recipeList }: PropType) => {
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const result = e.target.value;
     setUserInput(result);
