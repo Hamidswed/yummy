@@ -54,15 +54,13 @@ function App() {
     setFavorite(updatedFavorite);
   };
 
-  const checkIsFavorite = (id:number) => {
+  const checkIsFavorite = (id: number) => {
     const updatedFavorite = [...favorite];
-    const recipeIndex = updatedFavorite.findIndex(
-      (item) => item.idMeal === id
-    );
+    const recipeIndex = updatedFavorite.findIndex((item) => item.idMeal === id);
     if (recipeIndex === -1) {
-      return false
+      return false;
     } else {
-      return true
+      return true;
     }
   };
 
@@ -84,7 +82,15 @@ function App() {
             />
           }
         />
-        <Route path="/favorite" element={<Favorite favorite={favorite} removeFromFavorite={removeFromFavorite}/>} />
+        <Route
+          path="/favorite"
+          element={
+            <Favorite
+              favorite={favorite}
+              removeFromFavorite={removeFromFavorite}
+            />
+          }
+        />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
