@@ -76,6 +76,7 @@ function App() {
           element={
             <Recipe
               recipeList={getRecipe}
+              userInput={userInput}
               setUserInput={setUserInput}
               addToFavorite={addToFavorite}
               removeFromFavorite={removeFromFavorite}

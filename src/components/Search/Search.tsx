@@ -4,6 +4,7 @@ import { RecipeType } from "../../App";
 import "./Search.css";
 
 type PropType = {
+  userInput:string
   setUserInput: React.Dispatch<React.SetStateAction<string>>;
   recipeList?: RecipeType[];
 };
@@ -14,7 +15,7 @@ const theme = createTheme({
   },
 });
 
-const Search = ({ setUserInput, recipeList }: PropType) => {
+const Search = ({ userInput,setUserInput, recipeList }: PropType) => {
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const result = e.target.value;
     setUserInput(result);
@@ -25,6 +26,7 @@ const Search = ({ setUserInput, recipeList }: PropType) => {
         <TextField
           id="standard-basic"
           label="Please enter the name"
+          value={userInput}
           variant="standard"
           onChange={inputHandler}
           color="warning"

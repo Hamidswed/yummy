@@ -5,22 +5,25 @@ import "./Recipe.css";
 
 type PropType = {
   recipeList?: RecipeType[];
+  userInput: string;
   setUserInput: React.Dispatch<React.SetStateAction<string>>;
   addToFavorite: Function;
   removeFromFavorite: Function;
-  checkIsFavorite: (id: number) => boolean
+  checkIsFavorite: (id: number) => boolean;
 };
 const Recipe = ({
   recipeList,
+  userInput,
   setUserInput,
   addToFavorite,
   removeFromFavorite,
-  checkIsFavorite
+  checkIsFavorite,
 }: PropType) => {
   return (
     <div>
       <div className="recipe-search">
         <Search
+          userInput={userInput}
           setUserInput={setUserInput}
           recipeList={recipeList}
         />
