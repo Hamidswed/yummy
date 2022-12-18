@@ -31,10 +31,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 
 const theme = createTheme({
   typography: {
-    fontFamily: [
-      '"Rajdhani"',
-      'sans-serif',
-    ].join(','),
+    fontFamily: ['"Rajdhani"', "sans-serif"].join(","),
   },
 });
 
@@ -55,14 +52,16 @@ type PropType = {
   recipeItem: RecipeType;
   addToFavorite: Function;
   removeFromFavorite: Function;
+  isFavorite: boolean;
 };
 const RecipeItem = ({
   recipeItem,
   addToFavorite,
   removeFromFavorite,
+  isFavorite,
 }: PropType) => {
   const [expanded, setExpanded] = useState(false);
-  const [favoritClick, setFavoriteClick] = useState(false);
+  const [favoritClick, setFavoriteClick] = useState(isFavorite);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -70,68 +69,83 @@ const RecipeItem = ({
 
   return (
     <ThemeProvider theme={theme}>
-    <Card sx={{ width: 345 , fontFamily:"'Rajdhani', sans-serif"}}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {recipeItem.strMeal.charAt(0)}
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={recipeItem.strMeal}
-        subheader={recipeItem.strCategory}
-        className="card"
-      />
-      <CardMedia
-        component="img"
-        height="194"
-        image={recipeItem.strMealThumb}
-        alt={recipeItem.strMeal}
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary" sx={{marginBottom:"10px"}}>
-          Ingredients:
-        </Typography>
-        <Typography variant="body2" color="text.secondary" align="left" sx={{lineHeight:"25px"}}>
-          1.{recipeItem.strIngredient1}: {recipeItem.strMeasure1}
-          <br />
-          2.{recipeItem.strIngredient2}: {recipeItem.strMeasure2}
-          <br />
-          3.{recipeItem.strIngredient3}: {recipeItem.strMeasure3}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton
-          aria-label="add to favorites"
-          onClick={() => {
-            setFavoriteClick(!favoritClick);
-            favoritClick
-              ? removeFromFavorite(recipeItem.idMeal)
-              : addToFavorite(recipeItem);
-          }}
-        >
-          <FavoriteIcon sx={{ color: favoritClick ? "red" : "gray" }} />
-        </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <Card
+        sx={{
+          width: 345,
+          height: expanded ? null : "",
+          fontFamily: "'Rajdhani', sans-serif",
+        }}
+      >
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              {recipeItem.strMeal.charAt(0)}
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title={recipeItem.strMeal}
+          subheader={recipeItem.strCategory}
+          className="card"
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image={recipeItem.strMealThumb}
+          alt={recipeItem.strMeal}
+        />
         <CardContent>
-          <Typography paragraph>Instruction:</Typography>
-          <Typography paragraph>{recipeItem.strInstructions}</Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ marginBottom: "10px" }}
+          >
+            Ingredients:
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            align="left"
+            sx={{ lineHeight: "25px" }}
+          >
+            1.{recipeItem.strIngredient1}: {recipeItem.strMeasure1}
+            <br />
+            2.{recipeItem.strIngredient2}: {recipeItem.strMeasure2}
+            <br />
+            3.{recipeItem.strIngredient3}: {recipeItem.strMeasure3}
+          </Typography>
         </CardContent>
-      </Collapse>
-    </Card>
+        <CardActions disableSpacing>
+          <IconButton
+            aria-label="add to favorites"
+            onClick={() => {
+              setFavoriteClick(!favoritClick);
+              favoritClick
+                ? removeFromFavorite(recipeItem.idMeal)
+                : addToFavorite(recipeItem);
+            }}
+          >
+            <FavoriteIcon sx={{ color: favoritClick ? "red" : "gray" }} />
+          </IconButton>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Instruction:</Typography>
+            <Typography paragraph>{recipeItem.strInstructions}</Typography>
+          </CardContent>
+        </Collapse>
+      </Card>
     </ThemeProvider>
   );
 };

@@ -54,6 +54,18 @@ function App() {
     setFavorite(updatedFavorite);
   };
 
+  const checkIsFavorite = (id:number) => {
+    const updatedFavorite = [...favorite];
+    const recipeIndex = updatedFavorite.findIndex(
+      (item) => item.idMeal === id
+    );
+    if (recipeIndex === -1) {
+      return false
+    } else {
+      return true
+    }
+  };
+
   return (
     <div className="App">
       <NavBarMain favorite={favorite} />
@@ -67,6 +79,7 @@ function App() {
               setUserInput={setUserInput}
               addToFavorite={addToFavorite}
               removeFromFavorite={removeFromFavorite}
+              checkIsFavorite={checkIsFavorite}
             />
           }
         />

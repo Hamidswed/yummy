@@ -8,12 +8,14 @@ type PropType = {
   setUserInput: React.Dispatch<React.SetStateAction<string>>;
   addToFavorite: Function;
   removeFromFavorite: Function;
+  checkIsFavorite: (id: number) => boolean
 };
 const Recipe = ({
   recipeList,
   setUserInput,
   addToFavorite,
   removeFromFavorite,
+  checkIsFavorite
 }: PropType) => {
   return (
     <div>
@@ -31,6 +33,7 @@ const Recipe = ({
               recipeItem={item}
               addToFavorite={addToFavorite}
               removeFromFavorite={removeFromFavorite}
+              isFavorite={checkIsFavorite(item.idMeal)}
             />
           );
         })}
