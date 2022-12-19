@@ -13,6 +13,7 @@ import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { RecipeType } from "../../App";
 import "./RecipeItem.css";
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -35,19 +36,6 @@ const theme = createTheme({
   },
 });
 
-type RecipeType = {
-  idMeal: number;
-  strMeal: string;
-  strCategory: string;
-  strMealThumb: string;
-  strIngredient1: string;
-  strIngredient2: string;
-  strIngredient3: string;
-  strMeasure1: string;
-  strMeasure2: string;
-  strMeasure3: string;
-  strInstructions: string;
-};
 type PropType = {
   recipeItem: RecipeType;
   addToFavorite: Function;
