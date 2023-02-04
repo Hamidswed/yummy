@@ -1,4 +1,4 @@
-# Yummy - React App
+# Yummy - React App - (public reop)
 
 The purpose of this assignment is to practice TypeScript
 
